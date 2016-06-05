@@ -49,7 +49,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git H take z virtualenv python zsh-syntax-highlighting colored-man-pages)
+plugins=(git H take z virtualenv python zsh-syntax-highlighting colored-man-pages last-working-dir)
 
 # User configuration
 
@@ -103,6 +103,7 @@ alias Octave="cd ~/Documents/matlab; octave --no-gui"
 alias Bluetooth="sudo modprobe ath3k btusb bluetooth"
 alias Decrease_brightness="xbacklight -dec 10"
 alias Increase_brightness="xbacklight -inc 10"
+alias tmux="tmux -u"
 
 myfunction1() {
     ssh -D8080 -q rrahul@10.6.15.$1
@@ -121,13 +122,31 @@ myfunction3() {
 }
 alias Activate=myfunction3
 
-
+#================================================
 
 # new terminal tab is opened in pwd
 . /etc/profile.d/vte.sh
+
+# Scala can be accessed
+export SCALA_HOME=/usr/local/src/scala/scala-2.10.4
+export PATH=$SCALA_HOME/bin:$PATH
 
 # start  terminal command in new line
 # precmd() { print "" }
 # PROMPT+='
 #' # Newline
+
+# ========Scrolling========
+TranslateWheelToCursor=on
+DisableWheelToCursorByCtrl=on
+
+
+
+
+#Start Tmux by default
+if command -v tmux>/dev/null; then
+  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux -u
+fi
+
+
 
