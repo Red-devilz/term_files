@@ -1,5 +1,3 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -49,12 +47,27 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git H take z virtualenv python zsh-syntax-highlighting colored-man-pages last-working-dir)
+
+
+plugins=( 
+		 take 
+		 z 
+		 virtualenv
+		 virtualenvwrapper 
+		 python 
+		 zsh-syntax-highlighting 
+		 colored-man-pages 
+		 last-working-dir 
+		 notify 
+		 web-search
+		 node
+	    )
+
+export ZSH=/home/rahul/.oh-my-zsh
 
 # User configuration
 
 # Prompt
-
 
 # export MANPATH="/usr/local/man:$MANPATH"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -62,70 +75,35 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Use oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-
-
 # virtualenv and virtualenvwrapper
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
-#
-#
-# remove annoying errors for gvim
-alias gvim="gvim 2>/dev/null"
 
-# Other defined aliases
-alias Octave="cd ~/Documents/matlab; octave --no-gui"
+
 alias Bluetooth="sudo modprobe ath3k btusb bluetooth"
-alias Decrease_brightness="xbacklight -dec 10"
-alias Increase_brightness="xbacklight -inc 10"
 alias tmux="tmux -u"
+alias Weather="curl http://wttr.in/"
+alias Soundwire="~/Documents/SoundWireServer/SoundWireServer"
+alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gitfile="git log --stat"
 
 myfunction1() {
     ssh -D8080 -q rrahul@10.6.15.$1
 }
 alias Connect=myfunction1
 
-myfunction2() {
-    mkdir ~/Documents/python/sem4/$1
-    scp rrahul@10.6.15.119:~/Documents/CS2810/$1/* ~/Documents/python/sem4/$1
-}
-alias File_copy=myfunction2
-
-
 myfunction3() {
     source $1/bin/activate
 }
 alias Activate=myfunction3
+#=======  SSH ===========================
 
+ssh-add ~/.ssh/*.pem
 #================================================
 
 # new terminal tab is opened in pwd
-. /etc/profile.d/vte.sh
+[[ -f /etc/profile.d/vte.sh ]] && . /etc/profile.d/vte.sh
 
 # Scala can be accessed
 export SCALA_HOME=/usr/local/src/scala/scala-2.10.4
@@ -142,11 +120,17 @@ DisableWheelToCursorByCtrl=on
 
 
 
-
 #Start Tmux by default
 if command -v tmux>/dev/null; then
   [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux -u
 fi
 
+stty intr ^E
 
+longc(){
+    start=$(date +%s)
+    "$@"
+    [ $(($(date +%s) - start)) -le 15 ] || notify-send "Command Executed" "\
+ \"$(echo $@)\" took $(($(date +%s) - start)) seconds"
+}
 
