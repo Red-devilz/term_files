@@ -11,7 +11,7 @@ vim +PluginInstall +qall
 # Install require stuff
 sudo apt-get update
 sudp apt-get install htop screen
-sudo apt-get install -y python-pip python-dev python-virtualenv install ctags
+sudo apt-get install -y python-pip python-dev python-virtualenv ctags
 sudo apt-get install -y python-opencv
 
 export LC_ALL="en_US.UTF-8"
