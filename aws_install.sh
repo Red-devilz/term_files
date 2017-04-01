@@ -30,7 +30,8 @@ cd tmp
 sudo apt-get install -y libsdl1.2-dev libsdl-gfx1.2-dev libsdl-image1.2-dev cmake
 mkdir build && cd build
 cmake -DUSE_SDL=ON -DUSE_RLGLUE=OFF -DBUILD_EXAMPLES=ON ..
-make -j 8
+make -j 16
+cd ..
 sudo -H pip install .
 cd ..
 rm -rf tmp
