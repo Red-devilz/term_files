@@ -2,7 +2,7 @@
 mkdir setting_files
 # Install Vimrc
 git clone https://github.com/Red-devilz/Vim__files.git tmp
-mv tmp/.vimrc .
+mv tmp/vimrc2.min ~/.vimrc
 mv tmp/.vim .
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 rm tmp -rf
