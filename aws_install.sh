@@ -1,5 +1,4 @@
 # Make directories
-mkdir setting_files
 # Install Vimrc
 git clone https://github.com/Red-devilz/Vim__files.git tmp
 mv tmp/vimrc2.min ~/.vimrc
@@ -39,6 +38,7 @@ rm -rf tmp
 
 # Load git repo
 git clone https://Rahul_13@bitbucket.org/rlprojectsiitm/enduro-baseline.git  factored_actions
+git clone https://Rahul_13@bitbucket.org/rlprojectsiitm/baselines.git
  
 
 # Mount for first time
