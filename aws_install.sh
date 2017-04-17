@@ -48,9 +48,10 @@ luarocks install luasocket
 luarocks install tds
 luarocks install torchx 
 
-luarocks install moses 
-# luarocks install rnn
-# luarocks install dpnn
+git clone git://github.com/Yonaba/Moses.git
+luarocks install rockspec/moses-1.6.0-1.rockspec
+luarocks install rnn
+luarocks install dpnn
 
 luarocks install https://raw.githubusercontent.com/lake4790k/xitari/master/xitari-0-0.rockspec
 luarocks install https://raw.githubusercontent.com/Kaixhin/alewrap/master/alewrap-0-0.rockspec
