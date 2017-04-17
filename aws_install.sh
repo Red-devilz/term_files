@@ -35,6 +35,26 @@ sudo -H pip install .
 cd ..
 rm -rf tmp
 
+git clone https://github.com/torch/distro.git ~/torch --recursive
+cd ~/torch; bash install-deps;
+./install.sh
+source ~/.bashrc
+
+luarocks install logroll 
+luarocks install classic  
+luarocks install nninit
+luarocks install luaposix 
+luarocks install luasocket 
+luarocks install tds
+luarocks install torchx 
+
+luarocks install moses 
+# luarocks install rnn
+# luarocks install dpnn
+
+luarocks install https://raw.githubusercontent.com/lake4790k/xitari/master/xitari-0-0.rockspec
+luarocks install https://raw.githubusercontent.com/Kaixhin/alewrap/master/alewrap-0-0.rockspec
+luarocks install https://raw.githubusercontent.com/Kaixhin/rlenvs/master/rocks/rlenvs-scm-1.rockspec
 
 # Load git repo
 git clone https://Rahul_13@bitbucket.org/rlprojectsiitm/enduro-baseline.git  factored_actions
