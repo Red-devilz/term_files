@@ -40,6 +40,9 @@ cd ~/torch; bash install-deps;
 ./install.sh
 source ~/.bashrc
 
+sudo chmod 777 /home/ubuntu/.cache/luarocks/
+sudo apt-get install luarocks
+luarocks install totem
 luarocks install logroll 
 luarocks install classic  
 luarocks install nninit
@@ -49,9 +52,9 @@ luarocks install tds
 luarocks install torchx 
 
 git clone git://github.com/Yonaba/Moses.git
-luarocks install rockspec/moses-1.6.0-1.rockspec
-luarocks install rnn
+luarocks install Moses/rockspec/moses-1.6.0-1.rockspec
 luarocks install dpnn
+luarocks install rnn
 
 luarocks install https://raw.githubusercontent.com/lake4790k/xitari/master/xitari-0-0.rockspec
 luarocks install https://raw.githubusercontent.com/Kaixhin/alewrap/master/alewrap-0-0.rockspec
