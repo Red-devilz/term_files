@@ -38,7 +38,7 @@ rm -rf tmp
 git clone https://github.com/torch/distro.git ~/torch --recursive
 cd ~/torch; bash install-deps;
 ./install.sh
-source ~/.bashrc
+. /home/ubuntu/torch/install/bin/torch-activate # Instead of source ~/.bashrc which throws an error in some AWS instances
 cd ~
 
 sudo apt-get install luarocks
@@ -69,5 +69,5 @@ luarocks install https://raw.githubusercontent.com/Kaixhin/rlenvs/master/rocks/r
 # sudo mount /dev/xvdb ~/ext_vol
 
 # Load git repo
-git clone https://Rahul_13@bitbucket.org/rlprojectsiitm/enduro-baseline.git ~/ext_vol/factored_actions
-git clone https://Rahul_13@bitbucket.org/rlprojectsiitm/baselines.git ~/ext_vol/baselines
+# git clone https://Rahul_13@bitbucket.org/rlprojectsiitm/enduro-baseline.git ~/ext_vol/factored_actions
+# git clone https://Rahul_13@bitbucket.org/rlprojectsiitm/baselines.git ~/ext_vol/baselines
