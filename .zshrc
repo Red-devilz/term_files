@@ -68,6 +68,10 @@ export ZSH=/home/rahul/.oh-my-zsh
 # User configuration
 
 # Prompt
+zstyle ':notify:*' error-icon "/usr/share/icons/Numix/48/status/error.svg"
+zstyle ':notify:*' error-title "Execution Failed"
+zstyle ':notify:*' success-title "Succesfully Executed"
+zstyle ':notify:*' success-icon "/usr/share/icons/Numix/48/status/stock_check-filled.svg"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -87,6 +91,8 @@ alias Weather="curl http://wttr.in/"
 alias Soundwire="~/Documents/SoundWireServer/SoundWireServer"
 alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gitfile="git log --stat"
+alias vimwiki="vim +VimwikiIndex"
+alias todo="vim ~/Documents/vim/wiki/Todo.wiki"
 
 myfunction1() {
     ssh -D8080 -q rrahul@10.6.15.$1
@@ -99,7 +105,19 @@ myfunction3() {
 alias Activate=myfunction3
 #=======  SSH ===========================
 
-ssh-add ~/.ssh/*.pem
+# ssh-add ~/.ssh/*.pem >/dev/null 2>&1
+
+
+# ssh shortcuts
+alias ssh_gpu1="ssh -i ~/.ssh/deepNets.pem ubuntu@ec2-204-236-242-215.compute-1.amazonaws.com"
+alias ssh_gpu2="ssh -i ~/.ssh/mlcontest.pem ubuntu@ec2-13-126-133-102.ap-south-1.compute.amazonaws.com"
+alias ssh_gpu3="ssh -i ~/.ssh/deepNets.pem ubuntu@ec2-54-172-43-200.compute-1.amazonaws.com"
+alias ssh_cpu="ssh -i ~/.ssh/mlcontest.pem ubuntu@ec2-13-126-80-32.ap-south-1.compute.amazonaws.com"
+
+
+alias ssh_gpu="ssh -i ~/.ssh/deepNets.pem ubuntu@ec2-34-227-157-166.compute-1.amazonaws.com"
+
+
 #================================================
 
 # new terminal tab is opened in pwd
@@ -125,6 +143,7 @@ if command -v tmux>/dev/null; then
   [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux -u
 fi
 
+# Ctr + E = SIGINT
 stty intr ^E
 
 longc(){
@@ -133,4 +152,20 @@ longc(){
     [ $(($(date +%s) - start)) -le 15 ] || notify-send "Command Executed" "\
  \"$(echo $@)\" took $(($(date +%s) - start)) seconds"
 }
+
+
+# scp no_globing
+alias scp='noglob scp_wrap'
+function scp_wrap {
+  local -a args
+  local i
+  for i in "$@"; do case $i in
+    (*:*) args+=($i) ;;
+    (*) args+=(${~i}) ;;
+  esac; done
+  command scp "${(@)args}"
+}
+
+
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
