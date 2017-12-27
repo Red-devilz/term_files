@@ -38,15 +38,17 @@ rm -rf tmp
 git clone https://github.com/torch/distro.git ~/torch --recursive
 cd ~/torch; bash install-deps;
 ./install.sh
-source ~/.bashrc
+. /home/ubuntu/torch/install/bin/torch-activate # Instead of source ~/.bashrc which throws an error in some AWS instances
+cd ~
 
-sudo chmod 777 /home/ubuntu/.cache/luarocks/
 sudo apt-get install luarocks
+sudo chmod 777 /home/ubuntu/.cache/luarocks/
+
 luarocks install totem
 luarocks install logroll 
 luarocks install classic  
 luarocks install nninit
-luarocks install luaposix 
+luarocks install luaposix 33.4.0
 luarocks install luasocket 
 luarocks install tds
 luarocks install torchx 
@@ -60,13 +62,12 @@ luarocks install https://raw.githubusercontent.com/lake4790k/xitari/master/xitar
 luarocks install https://raw.githubusercontent.com/Kaixhin/alewrap/master/alewrap-0-0.rockspec
 luarocks install https://raw.githubusercontent.com/Kaixhin/rlenvs/master/rocks/rlenvs-scm-1.rockspec
 
-# Load git repo
-git clone https://Rahul_13@bitbucket.org/rlprojectsiitm/enduro-baseline.git  factored_actions
-git clone https://Rahul_13@bitbucket.org/rlprojectsiitm/baselines.git
- 
-
 # Mount for first time
 # lsblk
 # sudo mkfs -t ext4 /dev/xvdb
 # sudo mkdir ~/ext_vol
 # sudo mount /dev/xvdb ~/ext_vol
+
+# Load git repo
+# git clone https://Rahul_13@bitbucket.org/rlprojectsiitm/enduro-baseline.git ~/ext_vol/factored_actions
+# git clone https://Rahul_13@bitbucket.org/rlprojectsiitm/baselines.git ~/ext_vol/baselines
