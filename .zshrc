@@ -3,7 +3,54 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel9k/powerlevel9k"
+# ZSH_THEME="agnoster"
+
+# Configuracion POWERLVEL9K
+POWERLEVEL9K_MODE='awesome-patched'
+
+
+
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_left"
+
+# Elementos de la barra
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon ssh virtualenv dir_writable dir vcs status )
+POWERLEVEL9K_DISABLE_RPROMPT=true
+# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status load ram rbenv time)
+POWERLEVEL9K_STATUS_VERBOSE=false
+
+POWERLEVEL9K_DIR_HOME_BACKGROUND='09'
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='09'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='009'
+POWERLEVEL9K_DIR_HOME_FOREGROUND='236'
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='236'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='236'
+
+POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND='015'
+POWERLEVEL9K_OS_ICON_FOREGROUND='001'
+
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B0'
+
+POWERLEVEL9K_PYTHON_ICON=$'\uF110'
+POWERLEVEL9K_VIRTUALENV_BACKGROUND='24'
+
+# `git hub colors`
+# POWERLEVEL9K_VCS_CLEAN_BACKGROUND='236'
+# POWERLEVEL9K_VCS_CLEAN_BACKGROUND='119'
+# POWERLEVEL9K_VCS_CLEAN_FOREGROUND='236'
+# POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='214'
+# POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='236'
+# POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='196'
+# POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='236'
+
+# Quitar iconos del inicio
+POWERLEVEL9K_HOME_ICON='\uE12C'
+# POWERLEVEL9K_HOME_SUB_ICON=''
+POWERLEVEL9K_FOLDER_ICON='\uE18D'
+
+
+
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -50,6 +97,7 @@ ZSH_THEME="agnoster"
 
 
 plugins=( 
+		 colorize
 		 take 
 		 z 
 		 virtualenv
@@ -91,8 +139,13 @@ alias Weather="curl http://wttr.in/"
 alias Soundwire="~/Documents/SoundWireServer/SoundWireServer"
 alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gitfile="git log --stat"
-alias vimwiki="vim +VimwikiIndex"
+alias vimwiki="cd ~/Documents/vim/wiki && vim +VimwikiIndex"
 alias todo="vim ~/Documents/vim/wiki/Todo.wiki"
+alias jabref="java -jar ~/Documents/bib/JabRef-4.1.jar >/dev/null 2>&1 &; disown"
+alias zotero="~/Documents/bib/Zotero/zotero >/dev/null 2>&1 &; disown"
+alias trello="~/Documents/trello/Trello-linux-0.1.9/Trello >/dev/null 2>&1 &; disown"
+alias nautilus="nautilus .  >/dev/null 2>&1 & disown"
+alias wikisync="cd ~/Documents/vim/wiki; git status; git add . ; git commit -m 'syncing file'; git push"
 
 myfunction1() {
     ssh -D8080 -q rrahul@10.6.15.$1
@@ -103,20 +156,21 @@ myfunction3() {
     source $1/bin/activate
 }
 alias Activate=myfunction3
+
+myfunction4() {
+
+	OUT="$(tabbed -cd -n zathura zathura $1 -e 2>/dev/null )"
+	wmctrl -ir $OUT -b add,maximized_vert,maximized_horz
+
+}
+alias zathura=myfunction4
 #=======  SSH ===========================
 
 # ssh-add ~/.ssh/*.pem >/dev/null 2>&1
 
 
 # ssh shortcuts
-alias ssh_gpu1="ssh -i ~/.ssh/deepNets.pem ubuntu@ec2-204-236-242-215.compute-1.amazonaws.com"
-alias ssh_gpu2="ssh -i ~/.ssh/mlcontest.pem ubuntu@ec2-13-126-133-102.ap-south-1.compute.amazonaws.com"
-alias ssh_gpu3="ssh -i ~/.ssh/deepNets.pem ubuntu@ec2-54-172-43-200.compute-1.amazonaws.com"
-alias ssh_cpu="ssh -i ~/.ssh/mlcontest.pem ubuntu@ec2-13-126-80-32.ap-south-1.compute.amazonaws.com"
-
-
-alias ssh_gpu="ssh -i ~/.ssh/deepNets.pem ubuntu@ec2-34-227-157-166.compute-1.amazonaws.com"
-
+alias ssh_gpu='ssh -i "rlkey.pem" ubuntu@ec2-34-239-228-0.compute-1.amazonaws.com'
 
 #================================================
 
@@ -144,7 +198,7 @@ if command -v tmux>/dev/null; then
 fi
 
 # Ctr + E = SIGINT
-stty intr ^E
+# stty intr ^E
 
 longc(){
     start=$(date +%s)
@@ -166,6 +220,10 @@ function scp_wrap {
   command scp "${(@)args}"
 }
 
+
+export TRELLO_USER=rahul.ramesh10@yahoo.co.in
+export TRELLO_TOKEN=ef0328632cc949f448ca59a1fdaf4d50e86c8d4b9c109000c1cc98d6ee445e7a
+export TRELLO_KEY=fd9537f35d04a90d06fcd66441fdd72d
 
 source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 

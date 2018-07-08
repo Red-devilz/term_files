@@ -122,6 +122,8 @@ alias Octave="cd ~/Documents/matlab; octave --no-gui"
 alias Bluetooth="sudo modprobe ath3k btusb bluetooth"
 alias Decrease_brightness="xbacklight -dec 10"
 alias Increase_brightness="xbacklight -inc 10"
+alias Weather="curl http://wttr.in/"
+
 
 myfunction1() {
     ssh -D8080 -q rrahul@10.6.15.$1
@@ -151,9 +153,9 @@ bind '"\e[B": history-search-forward'
 
 
 # virtualenv and virtualenvwrapper
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+# export WORKON_HOME=$HOME/.virtualenvs
+# source /usr/local/bin/virtualenvwrapper.sh
 
 
 # ============Git ===================
@@ -180,3 +182,9 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 export SHELL=/bin/zsh
 exec /bin/zsh -l
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+
