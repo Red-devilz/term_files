@@ -1,15 +1,15 @@
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
+export TERM="xterm-256color"
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="powerlevel9k/powerlevel9k"
 # ZSH_THEME="agnoster"
 
 # Configuracion POWERLVEL9K
-POWERLEVEL9K_MODE='awesome-patched'
-
-
+# POWERLEVEL9K_MODE='awesome-fontconfig'
+# POWERLEVEL9K_MODE='awesome-patched'
+POWERLEVEL9K_MODE='nerdfont-complete'
 
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_left"
@@ -128,58 +128,22 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 source $ZSH/oh-my-zsh.sh
 
 # virtualenv and virtualenvwrapper
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+# export WORKON_HOME=$HOME/.virtualenvs
+# source /usr/local/bin/virtualenvwrapper.sh
 
-
-alias Bluetooth="sudo modprobe ath3k btusb bluetooth"
 alias tmux="tmux -u"
 alias Weather="curl http://wttr.in/"
-alias Soundwire="~/Documents/SoundWireServer/SoundWireServer"
 alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gitfile="git log --stat"
 alias vimwiki="cd ~/Documents/vim/wiki && vim +VimwikiIndex"
 alias todo="vim ~/Documents/vim/wiki/Todo.wiki"
-alias jabref="java -jar ~/Documents/bib/JabRef-4.1.jar >/dev/null 2>&1 &; disown"
 alias zotero="~/Documents/bib/Zotero/zotero >/dev/null 2>&1 &; disown"
-alias trello="~/Documents/trello/Trello-linux-0.1.9/Trello >/dev/null 2>&1 &; disown"
 alias nautilus="nautilus .  >/dev/null 2>&1 & disown"
 alias wikisync="cd ~/Documents/vim/wiki; git status; git add . ; git commit -m 'syncing file'; git push"
 
-myfunction1() {
-    ssh -D8080 -q rrahul@10.6.15.$1
-}
-alias Connect=myfunction1
-
-myfunction3() {
-    source $1/bin/activate
-}
-alias Activate=myfunction3
-
-myfunction4() {
-
-	OUT="$(tabbed -cd -n zathura zathura $1 -e 2>/dev/null )"
-	wmctrl -ir $OUT -b add,maximized_vert,maximized_horz
-
-}
-alias zathura=myfunction4
-#=======  SSH ===========================
-
-# ssh-add ~/.ssh/*.pem >/dev/null 2>&1
-
-
-# ssh shortcuts
-alias ssh_gpu='ssh -i "rlkey.pem" ubuntu@ec2-34-239-228-0.compute-1.amazonaws.com'
-
-#================================================
-
 # new terminal tab is opened in pwd
 [[ -f /etc/profile.d/vte.sh ]] && . /etc/profile.d/vte.sh
-
-# Scala can be accessed
-export SCALA_HOME=/usr/local/src/scala/scala-2.10.4
-export PATH=$SCALA_HOME/bin:$PATH
 
 # start  terminal command in new line
 # precmd() { print "" }
@@ -191,11 +155,11 @@ TranslateWheelToCursor=on
 DisableWheelToCursorByCtrl=on
 
 
-
 #Start Tmux by default
 if command -v tmux>/dev/null; then
   [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux -u
 fi
+
 
 # Ctr + E = SIGINT
 # stty intr ^E
@@ -220,10 +184,5 @@ function scp_wrap {
   command scp "${(@)args}"
 }
 
-
-export TRELLO_USER=rahul.ramesh10@yahoo.co.in
-export TRELLO_TOKEN=ef0328632cc949f448ca59a1fdaf4d50e86c8d4b9c109000c1cc98d6ee445e7a
-export TRELLO_KEY=fd9537f35d04a90d06fcd66441fdd72d
-
-source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+source "$HOME/.config/nvim/plugged/gruvbox/gruvbox_256palette.sh"
 

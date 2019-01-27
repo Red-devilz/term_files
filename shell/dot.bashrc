@@ -145,7 +145,7 @@ alias Activate=myfunction3
 
 
 # new terminal tab is opened in pwd
-. /etc/profile.d/vte.sh
+# . /etc/profile.d/vte.sh
 
 #press up to search history with partially completed command
 bind '"\e[A": history-search-backward'

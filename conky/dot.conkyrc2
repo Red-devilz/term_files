@@ -55,7 +55,7 @@ conky.config = {
 
 conky.text = [[
 
-${voffset 10}${color1}${font Helvetica Neue:pixelsize=90}${time %I:%M}${font}
+${voffset 10}${color1}${font Helvetica Neue:pixelsize=70}${time %I:%M}${font}
 ${voffset -90}${offset 265}${color2}${font Lato:pixelsize=32}${time %d} 
 ${voffset -15}${offset 245}${color3}${font Lato:thin:pixelsize=20}${time  %B} ${time %Y}
 ${font}${voffset -5}${color1}${offset 235}${font Distortion Dos Digital:pixelsize=32}${time %A}${font}
