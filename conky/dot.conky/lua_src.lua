@@ -78,7 +78,7 @@ function conky_main_bars()
 			smooth=true,
 			cap="r",
 			skew_y=0,
-                        space=4,
+			space=4,
 			mid_colour={{0.5,0x4F5E63,0.60}}
 		},
 		{
@@ -222,7 +222,7 @@ function conky_main_bars()
 			smooth=true,
 			cap="r",
 			skew_y=0,
-                        space=4,
+            space=4,
 			mid_colour={{0.5,0x4F5E63,0.60}}
 		},
 		{
@@ -245,25 +245,6 @@ function conky_main_bars()
 		},
 
 		{
-			name="battery_percent",
-			arg="BAT0",
-			max=100,
-			alarm=20,
-			bg_colour={0x4F5E63,0.20},
-			fg_colour={0x56696F,1.00},
-			alarm_colour={0xA0584A,0.80},
-			x=355,y=45,
-			blocks=6,
-			height=4,width=25,
-			angle=360,
-			smooth=true,
-			cap="r",
-			skew_y=0,
-                        space=4,
-                        reflection=4,
-			mid_colour={{0.5,0x4F5E63,0.60}}
-		},
-		{
 			name="acpitemp",
 			arg="",
 			max=100,
@@ -271,7 +252,7 @@ function conky_main_bars()
 			bg_colour={0x4F5E63,0.20},
 			fg_colour={0x56696F,1.00},
 			alarm_colour={0xA0584A,0.80},
-			x=390,y=45,
+			x=355,y=45,
 			blocks=6,
 			height=4,width=25,
 			angle=360,

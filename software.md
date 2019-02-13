@@ -13,6 +13,10 @@ Software
 * Meslo LGM powerfont
 * VLC
 * Museeks
+* https://www.rescuetime.com/download_linux
+* https://github.com/benp44/git-bulk-toolkit 
+* apt-fast
+
 
 Code
 ---------
@@ -33,6 +37,14 @@ Code
 		sudo apt install conky-all
 		sudo apt install Lua5.1
 		sudo apt install xclip
+		sudo apt install libpcap
+		sudo apt install texlive-full
+		sudo apt install latexmk
+		sudo apt install exuberant-ctags
+		sudo apt install conky-all
+		sudo apt install gem
+		sudo apt install ruby
+		sudo apt install tlp
 
 		sudo apt install python-pip
 		sudo apt install python3-pip

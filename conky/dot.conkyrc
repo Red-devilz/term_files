@@ -1,8 +1,8 @@
 
 conky.config = {
     double_buffer = true,
-    alignment = 'top_right',
-    border_width = 1,
+    alignment = 'top_right', 
+	border_width = 1,
     cpu_avg_samples = 2,
     default_color = 'white',
     default_outline_color = 'black',
@@ -46,11 +46,11 @@ conky.config = {
 
 	own_window_colour = '#000000',
 
-	lua_load = '~/.conky/lua_src.lua',
+	lua_load = '~/Documents/ubuntu/term_files/conky/dot.conky/lua_src.lua',
 	lua_draw_hook_post = 'main_bars',
 
-	gap_x = 290, 
-    gap_y = 690
+	gap_x = 270, 
+    gap_y = 708
 
 	
 }
@@ -59,7 +59,7 @@ conky.text = [[
 
 ${color 56696F}
 ${voffset 12}
-${goto 9}cpu1${goto 44}cpu2${goto 79}cpu3${goto 114}cpu4${goto 148}mem${goto 181}home${goto 218}root${goto 255}up${goto 287}down${goto 324}wifi${goto 359}bat${goto 391}temp
+${goto 9}cpu1${goto 44}cpu2${goto 79}cpu3${goto 114}cpu4${goto 148}mem${goto 181}home${goto 218}root${goto 255}up${goto 287}down${goto 324}wifi${goto 359}temp
 
 ]];
 

@@ -128,19 +128,28 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 source $ZSH/oh-my-zsh.sh
 
 # virtualenv and virtualenvwrapper
-# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-# export WORKON_HOME=$HOME/.virtualenvs
-# source /usr/local/bin/virtualenvwrapper.sh
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper_lazy.sh
 
 alias tmux="tmux -u"
+alias open="xdg-open"
 alias Weather="curl http://wttr.in/"
 alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gitfile="git log --stat"
-alias vimwiki="cd ~/Documents/vim/wiki && vim +VimwikiIndex"
 alias todo="vim ~/Documents/vim/wiki/Todo.wiki"
 alias zotero="~/Documents/bib/Zotero/zotero >/dev/null 2>&1 &; disown"
 alias nautilus="nautilus .  >/dev/null 2>&1 & disown"
-alias wikisync="cd ~/Documents/vim/wiki; git status; git add . ; git commit -m 'syncing file'; git push"
+alias wikisync="cd ~/Documents/personal/wikiNotes; git status; git add . ; git commit -m 'syncing file'; git push"
+
+function vimchage {
+	export pwdpath=`pwd`
+	cd ~/Documents/personal/wikiNotes 
+	vim +VimwikiIndex
+	cd $pwdpath
+}
+
+alias vimwiki='vimchage'
 
 # new terminal tab is opened in pwd
 [[ -f /etc/profile.d/vte.sh ]] && . /etc/profile.d/vte.sh
@@ -161,17 +170,6 @@ if command -v tmux>/dev/null; then
 fi
 
 
-# Ctr + E = SIGINT
-# stty intr ^E
-
-longc(){
-    start=$(date +%s)
-    "$@"
-    [ $(($(date +%s) - start)) -le 15 ] || notify-send "Command Executed" "\
- \"$(echo $@)\" took $(($(date +%s) - start)) seconds"
-}
-
-
 # scp no_globing
 alias scp='noglob scp_wrap'
 function scp_wrap {
@@ -184,5 +182,13 @@ function scp_wrap {
   command scp "${(@)args}"
 }
 
-source "$HOME/.config/nvim/plugged/gruvbox/gruvbox_256palette.sh"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH=$PATH:/usr/local/go/bin
 
+export PATH="~/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source "$HOME/.config/nvim/plugged/gruvbox/gruvbox_256palette.sh"
