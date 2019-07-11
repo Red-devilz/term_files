@@ -16,6 +16,9 @@ Software
 * https://www.rescuetime.com/download_linux
 * https://github.com/benp44/git-bulk-toolkit 
 * apt-fast
+* https://github.com/sharkdp/lscolors
+* https://github.com/sharkdp/bat/
+* https://github.com/tldr-pages/
 
 
 Code

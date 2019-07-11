@@ -133,12 +133,11 @@ export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 
 alias tmux="tmux -u"
+alias cat="bat"
 alias open="xdg-open"
-alias Weather="curl http://wttr.in/"
+alias weather="curl http://wttr.in/"
 alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gitfile="git log --stat"
-alias todo="vim ~/Documents/vim/wiki/Todo.wiki"
-alias zotero="~/Documents/bib/Zotero/zotero >/dev/null 2>&1 &; disown"
 alias nautilus="nautilus .  >/dev/null 2>&1 & disown"
 alias wikisync="cd ~/Documents/personal/wikiNotes; git status; git add . ; git commit -m 'syncing file'; git push"
 
@@ -183,12 +182,16 @@ function scp_wrap {
 }
 
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PATH:$PYENV_ROOT/bin"
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/home/rahul/Documents/apps/Go/bin
 
-export PATH="~/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# export PATH="~/.pyenv/bin:$PATH"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source "/home/rahul/Documents/apps/Go/src/github.com/sachaos/todoist/todoist_functions.sh"
 source "$HOME/.config/nvim/plugged/gruvbox/gruvbox_256palette.sh"
+
+ export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
