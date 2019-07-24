@@ -75,3 +75,7 @@ gnome-extensions:
 * WOrkspace isolated dash
 * Workspace switcher wrap-around
 * Dash to Dock
+
+Font:
+* Roboto Regular
+* MesloLGM Nerd Font RegularForPowerline 10.2

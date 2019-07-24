@@ -98,15 +98,15 @@ POWERLEVEL9K_FOLDER_ICON='\uE18D'
 
 plugins=( 
 		 colorize
-		 take 
+		 #take 
 		 z 
 		 virtualenv
 		 virtualenvwrapper 
 		 python 
-		 zsh-syntax-highlighting 
+		 #zsh-syntax-highlighting 
 		 colored-man-pages 
 		 last-working-dir 
-		 notify 
+		 #notify 
 		 web-search
 		 node
 	    )
