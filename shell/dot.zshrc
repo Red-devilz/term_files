@@ -186,12 +186,8 @@ export PATH="$PATH:$PYENV_ROOT/bin"
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/home/rahul/Documents/apps/Go/bin
 
-# export PATH="~/.pyenv/bin:$PATH"
-# eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
-
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source "/home/rahul/Documents/apps/Go/src/github.com/sachaos/todoist/todoist_functions.sh"
+# source "/home/rahul/Documents/apps/Go/src/github.com/sachaos/todoist/todoist_functions.sh"
 source "$HOME/.config/nvim/plugged/gruvbox/gruvbox_256palette.sh"
 
- export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
