@@ -1,6 +1,6 @@
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
-export TERM="xterm-256color"
+export TERM="tmux-256color"
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="powerlevel9k/powerlevel9k"
@@ -44,8 +44,7 @@ POWERLEVEL9K_VIRTUALENV_BACKGROUND='24'
 # POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='196'
 # POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='236'
 
-# Quitar iconos del inicio
-POWERLEVEL9K_HOME_ICON='\uE12C'
+POWERLEVEL9K_HOME_ICON='\uE22D'
 # POWERLEVEL9K_HOME_SUB_ICON=''
 POWERLEVEL9K_FOLDER_ICON='\uE18D'
 
@@ -130,15 +129,17 @@ source $ZSH/oh-my-zsh.sh
 # virtualenv and virtualenvwrapper
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper_lazy.sh
+source /usr/bin/virtualenvwrapper_lazy.sh
 
 alias tmux="tmux -u"
-alias cat="bat"
+alias vim="nvim"
+alias vi="nvim"
 alias open="xdg-open"
 alias weather="curl http://wttr.in/"
 alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gitfile="git log --stat"
 alias nautilus="nautilus .  >/dev/null 2>&1 & disown"
+alias thunar="thunar .  >/dev/null 2>&1 & disown"
 alias wikisync="cd ~/Documents/personal/wikiNotes; git status; git add . ; git commit -m 'syncing file'; git push"
 
 function vimchage {
@@ -186,8 +187,9 @@ export PATH="$PATH:$PYENV_ROOT/bin"
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/home/rahul/Documents/apps/Go/bin
 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source "/home/rahul/Documents/apps/Go/src/github.com/sachaos/todoist/todoist_functions.sh"
+source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source "$HOME/.config/nvim/plugged/gruvbox/gruvbox_256palette.sh"
 
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
