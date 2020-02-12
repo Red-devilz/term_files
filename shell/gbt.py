@@ -1,3 +1,4 @@
+
 #!/usr/bin/python3
 
 # Git bulk toolkit
@@ -306,37 +307,17 @@ delimiter + "%s %d", "--since=" + since_date, "--branches"], cwd=self._directory
 def get_repositories(parent_directory, git_workers, repo_blacklist, submodule_depth = 0):
 
     allRepos = [
-        "/home/rahul/Documents/ubuntu/term_files/"
+        "/home/rahul/Documents/config/term_files/"
     ]
     for path in allRepos:
         abs_path = os.path.join(parent_directory, path)
         git_config_path = os.path.join(abs_path, ".git")
-
-        if submodule_depth > 0:
-            if os.path.isfile(git_config_path):
-                git_workers.append(GitStatusWorker(abs_path, len(git_workers), submodule_depth))
-                get_repositories(abs_path, git_workers, repo_blacklist, submodule_depth + 1)
-        elif os.path.isdir(git_config_path):
-            if path not in repo_blacklist:
-                git_workers.append(GitStatusWorker(abs_path, len(git_workers), submodule_depth))
-                get_repositories(abs_path, git_workers, repo_blacklist, submodule_depth + 1)
+        git_workers.append(GitStatusWorker(abs_path, len(git_workers), submodule_depth))
 
 def upgrade_existing_config():
 
     config_file_path = get_config_file_path()
     development_dir = ""
-
-    if os.path.exists(config_file_path):
-        with open(config_file_path, "r") as f:
-            for line in f:
-                if line != "":
-                    if "[default]" not in line:
-                        development_dir = line
-                    break
-
-        if development_dir != "":
-            os.remove(config_file_path)
-            set_config_value(ConfigValue.DEVELOPMENT_DIR, development_dir)
 
 
 def get_config_value(name):
@@ -458,25 +439,7 @@ def get_config_file_path():
 
 def get_development_dir():
 
-    development_dir = get_config_value(ConfigValue.DEVELOPMENT_DIR)
-
-    if development_dir is "":
-        show_help()
-
-    while development_dir is "":
-        if development_dir is "":
-            provided_directory = input("Development directory not set.\nProvide the directory under which your git repositories reside: [" + os.getcwd() + "]:")
-            if provided_directory == "":
-                development_dir = os.getcwd()
-            else:
-                if os.path.isdir(provided_directory):
-                    development_dir = provided_directory
-                else:
-                    print("Directory does not exist")
-
-    set_config_value(ConfigValue.DEVELOPMENT_DIR, development_dir)
-
-    return development_dir
+    return " "
 
 
 def print_statuses(git_workers):

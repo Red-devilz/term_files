@@ -1,6 +1,8 @@
+#
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 export TERM="tmux-256color"
+export EDITOR=vim
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="powerlevel9k/powerlevel9k"
@@ -11,18 +13,18 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # POWERLEVEL9K_MODE='awesome-patched'
 POWERLEVEL9K_MODE='nerdfont-complete'
 
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_left"
 
 # Elementos de la barra
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon ssh virtualenv dir_writable dir vcs status )
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon ssh anaconda virtualenv dir_writable dir vcs status )
 POWERLEVEL9K_DISABLE_RPROMPT=true
 # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status load ram rbenv time)
 POWERLEVEL9K_STATUS_VERBOSE=false
 
 POWERLEVEL9K_DIR_HOME_BACKGROUND='09'
 POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='09'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='009'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='09'
 POWERLEVEL9K_DIR_HOME_FOREGROUND='236'
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='236'
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='236'
@@ -32,7 +34,7 @@ POWERLEVEL9K_OS_ICON_FOREGROUND='001'
 
 POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B0'
 
-POWERLEVEL9K_PYTHON_ICON=$'\uF110'
+POWERLEVEL9K_PYTHON_ICON=$'\uF81F'
 POWERLEVEL9K_VIRTUALENV_BACKGROUND='24'
 
 # `git hub colors`
@@ -44,10 +46,9 @@ POWERLEVEL9K_VIRTUALENV_BACKGROUND='24'
 # POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='196'
 # POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='236'
 
-POWERLEVEL9K_HOME_ICON='\uE22D'
+POWERLEVEL9K_HOME_ICON='\uF7DB'
 # POWERLEVEL9K_HOME_SUB_ICON=''
 POWERLEVEL9K_FOLDER_ICON='\uE18D'
-
 
 
 
@@ -127,20 +128,35 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 source $ZSH/oh-my-zsh.sh
 
 # virtualenv and virtualenvwrapper
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/bin/virtualenvwrapper_lazy.sh
 
 alias tmux="tmux -u"
 alias vim="nvim"
-alias vi="nvim"
-alias open="xdg-open"
+alias vifm="vifm -c ':only'"
+alias fzf="fzf --height 40%"
+alias open="xdg-open 2>/dev/null"
+alias xdg-open="xdg-open 2>/dev/null"
 alias weather="curl http://wttr.in/"
 alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gitfile="git log --stat"
 alias nautilus="nautilus .  >/dev/null 2>&1 & disown"
 alias thunar="thunar .  >/dev/null 2>&1 & disown"
 alias wikisync="cd ~/Documents/personal/wikiNotes; git status; git add . ; git commit -m 'syncing file'; git push"
+alias spotify-pause="dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+alias spotify-next="dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+alias spotify-prev="dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+
+bindkey '^ ' autosuggest-accept
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^P" up-line-or-beginning-search
+bindkey "^N" down-line-or-beginning-search
+
 
 function vimchage {
 	export pwdpath=`pwd`
@@ -190,6 +206,23 @@ export PATH=$PATH:/home/rahul/Documents/apps/Go/bin
 source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source "$HOME/.config/nvim/plugged/gruvbox/gruvbox_256palette.sh"
 
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+# export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+# export EDITOR=vi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/rahul/Documents/software/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/rahul/Documents/software/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/rahul/Documents/software/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/rahul/Documents/software/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
