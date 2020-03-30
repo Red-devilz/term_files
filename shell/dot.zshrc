@@ -122,7 +122,7 @@ zstyle ':notify:*' success-title "Succesfully Executed"
 zstyle ':notify:*' success-icon "/usr/share/icons/Numix/48/status/stock_check-filled.svg"
 
 # export MANPATH="/usr/local/man:$MANPATH"
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Use oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -139,7 +139,7 @@ alias vifm="vifm -c ':only'"
 alias fzf="fzf --height 40%"
 alias open="xdg-open 2>/dev/null"
 alias xdg-open="xdg-open 2>/dev/null"
-alias weather="curl http://wttr.in/"
+alias weather="curl http://wttr.in/south+jordan"
 alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gitfile="git log --stat"
 alias nautilus="nautilus .  >/dev/null 2>&1 & disown"
