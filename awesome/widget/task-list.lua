@@ -91,6 +91,7 @@ local function list_update(w, buttons, label, data, objects)
 
     local text, bg, bg_image, icon, args = label(o, tb)
     args = args or {}
+	-- gears.debug.print_warning(text)
 
     -- The text might be invalid, so use pcall.
     if text == nil or text == '' then
@@ -118,6 +119,12 @@ local function list_update(w, buttons, label, data, objects)
 	end
 	if o.class == "feh" then
 		icon = gears.surface("/usr/share/feh/images/feh.png")
+	end
+	if o.class == "Surf" then
+		icon = gears.surface("/usr/share/icons/la-capitaine/apps/scalable/browser.svg")
+	end
+	if o.class == "deadcells" then
+		icon = gears.surface("/usr/share/icons/la-capitaine/apps/scalable/steam.svg")
 	end
 
     if icon then

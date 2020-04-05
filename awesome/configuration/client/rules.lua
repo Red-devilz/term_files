@@ -3,6 +3,7 @@ local gears = require('gears')
 local client_keys = require('configuration.client.keys')
 local client_buttons = require('configuration.client.buttons')
 
+
 -- Rules
 awful.rules.rules = {
   -- All clients will match this rule.
@@ -25,6 +26,13 @@ awful.rules.rules = {
       maximized_vertical = true,
 	  size_hints_honor = false
     }
+  },
+  { rule = { class = "firefox" },
+	  except = { instance = "Navigator" },
+	  properties = {floating = true},
+  },
+  { rule = { instance = "deadcells" },
+	  properties = {floating = true},
   },
   { 
 	rule = { instance = "slack" },

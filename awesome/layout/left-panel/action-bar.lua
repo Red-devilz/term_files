@@ -54,6 +54,18 @@ return function(screen, panel, action_bar_width)
   mytextclock = wibox.widget.textclock("%H:%M ", 60)
   mytextclock.font = 'Roboto 10'
 
+
+  cal_t = awful.tooltip { 
+    objects        = { mytextclock }
+  }
+  mytextclock:connect_signal('mouse::enter', function()
+		awful.spawn.easy_async_with_shell(command, function()
+			awful.spawn.easy_async_with_shell("calcurse --next", function(out)
+				cal_t.text = out
+			end)
+		end)
+  end)
+
   local systray = wibox.widget.systray()
   systray:set_horizontal(false)
   systray:set_base_size(22)
@@ -123,14 +135,13 @@ return function(screen, panel, action_bar_width)
       TagList(screen)
     },
 	{
-       -- layout = wibox.layout.fixed.vertical,
-      layout = wibox.layout.fixed.vertical,
+	  layout = wibox.layout.fixed.vertical,
 	  wibox.container.margin(TaskList(screen), dpi(6), dpi(6), dpi(100), dpi(20))
 	},
 	-- nil,
     {
       -- Right widgets
-	  wibox.container.margin(spt_widget, dpi(15), dpi(15), dpi(0), dpi(6)),
+	  -- wibox.container.margin(spt_widget, dpi(15), dpi(15), dpi(0), dpi(6)),
 
       layout = wibox.layout.fixed.vertical,
 	  wibox.container.margin(systray, dpi(14), dpi(14)),

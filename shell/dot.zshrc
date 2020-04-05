@@ -137,8 +137,6 @@ alias tmux="tmux -u"
 alias vim="nvim"
 alias vifm="vifm -c ':only'"
 alias fzf="fzf --height 40%"
-alias open="xdg-open 2>/dev/null"
-alias xdg-open="xdg-open 2>/dev/null"
 alias weather="curl http://wttr.in/south+jordan"
 alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gitfile="git log --stat"
@@ -164,8 +162,16 @@ function vimchage {
 	vim +VimwikiIndex
 	cd $pwdpath
 }
+function openapp {
+	xdg-open $1 2>/dev/null & disown
+}
+function surfopen {
+	surf $1 2>/dev/null & disown
+}
 
 alias vimwiki='vimchage'
+alias open='openapp'
+alias surf='surfopen'
 
 # new terminal tab is opened in pwd
 [[ -f /etc/profile.d/vte.sh ]] && . /etc/profile.d/vte.sh

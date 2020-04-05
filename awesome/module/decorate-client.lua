@@ -8,7 +8,7 @@ local function renderClient(client, mode)
   end
 
   client.rendering_mode = mode
-  client.floating = false
+  -- client.floating = true
   client.maximized = false
   client.above = false
   client.below = false
@@ -101,6 +101,15 @@ _G.client.connect_signal(
     end
   end
 )
+
+_G.client.connect_signal("manage", function(c)
+    if c.floating then
+        awful.titlebar.show(c)
+		awful.placement.centered(_G.client.focus)
+    else
+        awful.titlebar.hide(c)
+    end
+end)
 
 _G.tag.connect_signal('property::selected', tagCallback)
 

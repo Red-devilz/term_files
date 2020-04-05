@@ -1,4 +1,5 @@
 local awful = require('awful')
+-- local dbus = require('dbus')
 require('awful.autofocus')
 local beautiful = require('beautiful')
 local hotkeys_popup = require('awful.hotkeys_popup').widget
@@ -33,32 +34,47 @@ local globalKeys =
     {description = 'focus previous by index', group = 'client'}
   ),
   awful.key(
-    {modkey},
-    's',
+    {modkey}, 's',
     function()
       _G.screen.primary.left_panel:toggle(true)
     end,
     {description = 'show main menu', group = 'awesome'}
   ),
-  awful.key({modkey}, 'u', awful.client.urgent.jumpto, {description = 'jump to urgent client', group = 'client'}),
-  awful.key(
-    {modkey},
-    'Tab',
-    function()
-      awful.client.focus.history.previous()
-      if _G.client.focus then
-        _G.client.focus:raise()
-      end
-    end,
-    {description = 'go back', group = 'client'}
+  awful.key({modkey}, 'u',
+	  awful.client.urgent.jumpto,
+	  {description = 'jump to urgent client', group = 'client'}
   ),
+
+  awful.key(
+	{modkey}, "Tab",
+    function ()
+        -- awful.client.focus.history.previous()
+        awful.client.focus.byidx(-1)
+        if client.focus then
+            client.focus:raise()
+        end
+    end,
+   {description = 'go forward', group = 'client'}
+  ),
+  awful.key(
+    {modkey, "Shift"}, "Tab",
+    function ()
+        -- awful.client.focus.history.previous()
+        awful.client.focus.byidx(1)
+        if client.focus then
+            client.focus:raise()
+        end
+     end,
+	 {description = 'go back', group = 'client'}
+  ),
+    
   -- Programms
   awful.key(
     {'Control', modkey},
     'l',
     function()
       awful.spawn(apps.default.lock)
-    end
+  end
   ),
   awful.key(
     {},
@@ -287,19 +303,10 @@ for i = 1, 9 do
       end,
       descr_toggle_focus
     ),
-
-    awful.key({'Control', altkey}, "\\", function()
-	  -- awful.util.spawn_with_shell('')
-	  awful.spawn('spt play')
-    end),
-    awful.key({'Control', altkey}, "]", function()
-	  -- awful.util.spawn_with_shell('')
-	  awful.spawn('spt next')
-    end),
-    awful.key({'Control', altkey}, "[", function()
-	  -- awful.util.spawn_with_shell('')
-	  awful.spawn('spt prev')
-    end)
+    awful.key({'Control', altkey}, "\\", 
+		function()
+		  awful.spawn('spt play')
+		end)
 	)
 end
 
