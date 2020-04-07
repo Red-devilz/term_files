@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 
 # Git bulk toolkit
@@ -307,7 +306,13 @@ delimiter + "%s %d", "--since=" + since_date, "--branches"], cwd=self._directory
 def get_repositories(parent_directory, git_workers, repo_blacklist, submodule_depth = 0):
 
     allRepos = [
-        "/home/rahul/Documents/config/term_files/"
+        "/home/rahul/Documents/config/term_files/",
+        "/home/rahul/Documents/config/Vim__files/",
+        "/home/rahul/Documents/personal/wikiNotes/",
+        "/home/rahul/Documents/personal/texTemplates/",
+        "/home/rahul/Documents/acads/courses/CIS520/",
+        "/home/rahul/Documents/acads/courses/ESE546/Penn-ESE546",
+        "/home/rahul/Documents/acads/research/PaperImplementations/",
     ]
     for path in allRepos:
         abs_path = os.path.join(parent_directory, path)

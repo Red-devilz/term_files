@@ -128,7 +128,6 @@ export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 source $ZSH/oh-my-zsh.sh
 
 # virtualenv and virtualenvwrapper
-# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/bin/virtualenvwrapper_lazy.sh

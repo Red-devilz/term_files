@@ -3,15 +3,13 @@
 Software
 ---------
 
-* keeweb
+* keepass
 * WPS-Office
 * Mailspring (n1-ido master)
 * Zotero
 * Visual studio code
 * Meslo LGM powerfont
-* https://www.rescuetime.com/download_linux
 * https://github.com/benp44/git-bulk-toolkit 
-* apt-fast
 
 
 Code
