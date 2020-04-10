@@ -6,7 +6,7 @@ return {
   -- List of apps to start by default on some actions
   default = {
     terminal = 'st',
-    editor = 'neovim',
+    editor = 'nvim',
     rofi = 'rofi -dpi ' .. get_dpi() .. ' -width ' .. with_dpi(400) .. ' -show drun -theme ' .. filesystem.get_configuration_dir() .. '/configuration/rofi.rasi',
     lock = 'betterlockscreen --lock blur'
   },

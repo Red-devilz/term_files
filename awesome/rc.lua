@@ -30,7 +30,8 @@ awful.screen.connect_for_each_screen(
 			if beautiful.wallpaper:sub(1, #"#") == "#" then
 				gears.wallpaper.set(beautiful.wallpaper)
 			elseif beautiful.wallpaper:sub(1, #"/") == "/" then
-				gears.wallpaper.maximized(beautiful.wallpaper, s)
+				offset = {x=30, y=-20}
+				gears.wallpaper.maximized(beautiful.wallpaper, s, false, offset)
 			end
 		else
 			beautiful.wallpaper(s)

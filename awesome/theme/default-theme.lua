@@ -79,7 +79,7 @@ local awesome_overrides =
   theme.systray_icon_spacing = 7
 
   --Client
-  theme.border_width = dpi(2)
+  theme.border_width = dpi(3)
   theme.border_focus = theme.primary.hue_500
   theme.border_normal = theme.background.hue_800
 
