@@ -39,6 +39,15 @@ _G.tag.connect_signal(
 )
 
 _G.client.connect_signal(
+  'manage',
+  function(c)
+    if c.first_tag.fullscreenMode then
+	  c.fullscreen = c.first_tag.fullscreenMode
+    end
+  end
+)
+
+_G.client.connect_signal(
   'property::fullscreen',
   function(c)
     c.first_tag.fullscreenMode = c.fullscreen
@@ -50,8 +59,10 @@ _G.client.connect_signal(
   'unmanage',
   function(c)
     if c.fullscreen then
-      c.screen.selected_tag.fullscreenMode = false
-      updateBarsVisibility()
+	  if next(c.screen.selected_tag:clients())  == nil then
+		  c.screen.selected_tag.fullscreenMode = false
+		  updateBarsVisibility()
+	  end
     end
   end
 )

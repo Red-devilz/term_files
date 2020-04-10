@@ -9,7 +9,11 @@ local clientKeys =
     {modkey},
     'f',
     function(c)
-      c.fullscreen = not c.fullscreen
+      state = not c.fullscreen
+	  t = client.focus.first_tag
+	  for _, otherc in pairs(t:clients()) do
+		  otherc.fullscreen = state
+	  end
       c:raise()
     end,
     {description = 'toggle fullscreen', group = 'client'}
