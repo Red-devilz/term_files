@@ -21,8 +21,8 @@ local function worker(args)
 
     local args = args or {}
 
-    local play_icon = '/usr/share/icons/Papirus-Dark/16x16/actions/player_pause.svg'
-    local pause_icon = '/usr/share/icons/Papirus-Dark/16x16/actions/player_play.svg'
+    local play_icon = '/usr/share/icons/Papirus/16x16/apps/spotify.svg'
+    local pause_icon = '/usr/share/icons/Papirus/16x16/apps/spotify.svg'
     local font = args.font or 'Play 0'
 
     spotify_widget = 
@@ -30,6 +30,7 @@ local function worker(args)
 		{
 			id = "icon",
 			widget = wibox.widget.imagebox,
+			image = play_icon
 		}, 
         {
             id = 'current_song',
@@ -37,18 +38,10 @@ local function worker(args)
             font = font
         },
         layout = wibox.layout.align.vertical,
-        set_status = function(self, is_playing)
-            self.icon.image = (is_playing and play_icon or pause_icon)
-        end,
         set_text = function(self, path)
             self.current_song.markup = path
         end,
     }
-
-    local update_widget_icon = function(widget, stdout, _, _, _)
-        stdout = string.gsub(stdout, "\n", "")
-        widget:set_status(stdout == 'Playing' and true or false)
-    end
 
     local update_widget_text = function(widget, stdout, _, _, _)
         if string.find(stdout, 'Error: Spotify is not running.') ~= nil then
@@ -61,8 +54,7 @@ local function worker(args)
         end
     end
 
-    watch(GET_SPOTIFY_STATUS_CMD, 1, update_widget_icon, spotify_widget)
-    watch(GET_CURRENT_SONG_CMD, 1, update_widget_text, spotify_widget)
+	watch(GET_CURRENT_SONG_CMD, 15, update_widget_text, spotify_widget)
 
     --- Adds mouse controls to the widget:
     --  - left click - play/pause
@@ -72,8 +64,8 @@ local function worker(args)
         if (button == 1) then
             awful.spawn("spt play", false)      -- left click
         end
-        awful.spawn.easy_async(GET_SPOTIFY_STATUS_CMD, function(stdout, stderr, exitreason, exitcode)
-            update_widget_icon(spotify_widget, stdout, stderr, exitreason, exitcode)
+        awful.spawn.easy_async(GET_CURRENT_SONG_CMD, function(stdout, stderr, exitreason, exitcode)
+            update_widget_text(spotify_widget, stdout, stderr, exitreason, exitcode)
         end)
     end)
 

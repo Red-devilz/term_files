@@ -17,7 +17,7 @@ local slider =
 
 watch(
   [[bash -c "cat /proc/stat | grep '^cpu '"]],
-  1,
+  120,
   function(_, stdout)
     local user, nice, system, idle, iowait, irq, softirq, steal, guest, guest_nice =
       stdout:match('(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s(%d+)%s')

@@ -108,13 +108,13 @@ local function list_update(w, buttons, label, data, objects)
 	bgb:set_bg(bg)
 
 	if o.class == "st-256color" then
-		icon = gears.surface("/usr/share/icons/Paper/24x24/apps/terminal.png")
+		icon = gears.surface("/usr/share/icons/la-capitaine/apps/scalable/terminal.svg")
 	end
 	if o.class == "Slack" then
 		icon = gears.surface("/usr/share/icons/Papirus/24x24/apps/slack.svg")
 	end
 	if o.class == "Spotify" then
-		icon = gears.surface("/usr/share/icons/Paper/24x24/apps/spotify.png")
+		icon = gears.surface("/usr/share/icons/Papirus/16x16/apps/spotify.svg")
 	end
 	if o.class == "feh" then
 		icon = gears.surface("/usr/share/feh/images/feh.png")

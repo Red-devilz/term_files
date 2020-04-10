@@ -14,7 +14,7 @@ local slider =
 
 watch(
   [[bash -c "df -h /home|grep '^/' | awk '{print $5}'"]],
-  10,
+  1200,
   function(_, stdout)
     local space_consumed = stdout:match('(%d+)')
     slider:set_value(tonumber(space_consumed))
