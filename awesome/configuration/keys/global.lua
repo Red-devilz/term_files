@@ -305,7 +305,7 @@ for i = 1, 9 do
     ),
     awful.key({'Control', altkey}, "\\", 
 		function()
-		  awful.spawn('spt play')
+		  awful.spawn('spt play', false)
 		end)
 	)
 end

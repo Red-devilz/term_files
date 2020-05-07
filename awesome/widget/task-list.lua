@@ -128,6 +128,9 @@ local function list_update(w, buttons, label, data, objects)
 	if o.class == "deadcells" then
 		icon = gears.surface("/usr/share/icons/la-capitaine/apps/scalable/steam.svg")
 	end
+	if o.name == "draw.io" then
+		icon = gears.surface("/usr/share/icons/la-capitaine/apps/scalable/xournal.svg")
+	end
 
     if icon then
 	  ib.image = icon

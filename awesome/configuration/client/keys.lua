@@ -25,6 +25,14 @@ local clientKeys =
       c:kill()
     end,
     {description = 'close', group = 'client'}
+  ),
+  awful.key(
+    {modkey, 'Control'},
+    't',
+    function(c)
+      c.floating = not c.floating
+    end,
+    {description = 'toggle float', group = 'client'}
   )
 )
 

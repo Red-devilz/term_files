@@ -1,9 +1,7 @@
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 export TERM="tmux-256color"
-export EDITOR=neovim
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
+export EDITOR=nvim
 ZSH_THEME="powerlevel9k/powerlevel9k"
 # ZSH_THEME="agnoster"
 
@@ -11,14 +9,13 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # POWERLEVEL9K_MODE='awesome-fontconfig'
 # POWERLEVEL9K_MODE='awesome-patched'
 POWERLEVEL9K_MODE='nerdfont-complete'
-
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_left"
 
 # Elementos de la barra
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon ssh anaconda virtualenv dir_writable dir vcs status )
-POWERLEVEL9K_DISABLE_RPROMPT=true
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(load ram rbenv time)
+POWERLEVEL9K_DISABLE_RPROMPT=true
 POWERLEVEL9K_STATUS_VERBOSE=false
 
 POWERLEVEL9K_DIR_HOME_BACKGROUND='09'
@@ -26,67 +23,47 @@ POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='09'
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='09'
 POWERLEVEL9K_DIR_HOME_FOREGROUND='236'
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='236'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='236'
-
 POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND='015'
 POWERLEVEL9K_OS_ICON_FOREGROUND='001'
 
 POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B0'
-
-POWERLEVEL9K_PYTHON_ICON=$'\uF81F'
 POWERLEVEL9K_VIRTUALENV_BACKGROUND='24'
 
-# `git hub colors`
-# POWERLEVEL9K_VCS_CLEAN_BACKGROUND='236'
-# POWERLEVEL9K_VCS_CLEAN_BACKGROUND='119'
-# POWERLEVEL9K_VCS_CLEAN_FOREGROUND='236'
-# POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='214'
-# POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='236'
-# POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='196'
-# POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='236'
-
-POWERLEVEL9K_HOME_ICON='\uF7DB'
+POWERLEVEL9K_PYTHON_ICON=$'\uF81F'
+POWERLEVEL9K_FOLDER_ICON=$'\uF74A'
 # POWERLEVEL9K_HOME_SUB_ICON=''
-POWERLEVEL9K_FOLDER_ICON='\uE18D'
+# POWERLEVEL9K_FOLDER_ICON='\uE18D'
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+# Plugins
 
 plugins=( 
 		 colorize
-		 #take 
 		 z 
 		 virtualenv
-		 virtualenvwrapper 
 		 python 
-		 #zsh-syntax-highlighting 
 		 colored-man-pages 
 		 last-working-dir 
+		 # zsh-syntax-highlighting 
+		 # virtualenvwrapper 
 		 # notify 
-		 web-search
-		 node
+		 # web-search
+		 # vi-mode
 	    )
 
 export ZSH=/home/rahul/.oh-my-zsh
-
-# User configuration
-
 export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
-
-# Use oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
+export FZF_DEFAULT_COMMAND='fd --type f'
+
 # virtualenv and virtualenvwrapper
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/bin/virtualenvwrapper_lazy.sh
+# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+# export WORKON_HOME=$HOME/.virtualenvs
+# source /usr/bin/virtualenvwrapper_lazy.sh
 
 alias tmux="tmux -u"
 alias vim="nvim"
-alias vifm="vifm -c ':only'"
-alias fzf="fzf --height 40%"
+alias vi="nvim"
 alias weather="curl http://wttr.in/south+jordan"
 alias gitlog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gitfile="git log --stat"
@@ -147,8 +124,6 @@ function scp_wrap {
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PATH:$PYENV_ROOT/bin"
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:/home/rahul/Documents/apps/Go/bin
 
 source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source "$HOME/.config/nvim/plugged/gruvbox/gruvbox_256palette.sh"

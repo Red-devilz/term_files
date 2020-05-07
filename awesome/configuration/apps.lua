@@ -14,9 +14,8 @@ return {
   run_on_start_up = {
     'compton --config ' .. filesystem.get_configuration_dir() .. 'configuration/compton.conf',
     'xfce4-power-manager', -- Power manager
-	-- 'rescuetime & disown',
 	'xss-lock -q -- betterlockscreen --lock blur',
-	'/home/rahul/Documents/software/dropbox/dropbox.py start',
+	-- '/home/rahul/Documents/software/dropbox/dropbox.py start',
 	'mailspring',
 	-- 'slack'
   }
