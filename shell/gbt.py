@@ -310,8 +310,6 @@ def get_repositories(parent_directory, git_workers, repo_blacklist, submodule_de
         "/home/rahul/Documents/config/Vim__files/",
         "/home/rahul/Documents/personal/wikiNotes/",
         "/home/rahul/Documents/personal/texTemplates/",
-        "/home/rahul/Documents/acads/courses/CIS520/",
-        "/home/rahul/Documents/acads/courses/ESE546/Penn-ESE546",
         "/home/rahul/Documents/acads/research/PaperImplementations/",
     ]
     for path in allRepos:

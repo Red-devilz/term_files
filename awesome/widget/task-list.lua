@@ -134,6 +134,7 @@ local function list_update(w, buttons, label, data, objects)
 
     if icon then
 	  ib.image = icon
+	  ibm:set_margins(8)
     else
 	  -- icon = capi3.image("/home/rahul/.local/share/icons/extra/slack.png")
 	  -- ib.image = icon

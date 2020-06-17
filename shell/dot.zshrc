@@ -144,3 +144,4 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+source ~/.fe2-completion

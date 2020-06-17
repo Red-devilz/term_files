@@ -48,8 +48,8 @@ local globalKeys =
   awful.key(
 	{modkey}, "Tab",
     function ()
-        -- awful.client.focus.history.previous()
-        awful.client.focus.byidx(-1)
+        awful.client.focus.history.previous()
+        -- awful.client.focus.byidx(1)
         if client.focus then
             client.focus:raise()
         end
@@ -59,8 +59,7 @@ local globalKeys =
   awful.key(
     {modkey, "Shift"}, "Tab",
     function ()
-        -- awful.client.focus.history.previous()
-        awful.client.focus.byidx(1)
+        awful.client.focus.byidx(-1)
         if client.focus then
             client.focus:raise()
         end
@@ -92,6 +91,14 @@ local globalKeys =
       awful.spawn(apps.default.terminal)
     end,
     {description = 'open a terminal', group = 'launcher'}
+  ),
+  awful.key(
+    {modkey},
+    'b',
+    function()
+      awful.spawn(apps.default.firefox)
+    end,
+    {description = 'open firefox', group = 'launcher'}
   ),
   awful.key({modkey, 'Control'}, 'r', _G.awesome.restart, {description = 'reload awesome', group = 'awesome'}),
   awful.key({modkey, 'Control'}, 'q', _G.awesome.quit, {description = 'quit awesome', group = 'awesome'}),
