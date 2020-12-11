@@ -85,6 +85,12 @@ function vimchage {
 	vim +VimwikiIndex
 	cd $pwdpath
 }
+function vimchageorg {
+	export pwdpath=`pwd`
+	cd ~/Documents/personal/wikiNotes/research/org/
+	vim index.wiki
+	cd $pwdpath
+}
 function openapp {
 	xdg-open $1 2>/dev/null & disown
 }
@@ -93,6 +99,7 @@ function surfopen {
 }
 
 alias vimwiki='vimchage'
+alias vimorg='vimchageorg'
 alias open='openapp'
 alias surf='surfopen'
 

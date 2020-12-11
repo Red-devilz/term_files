@@ -310,7 +310,6 @@ def get_repositories(parent_directory, git_workers, repo_blacklist, submodule_de
         "/home/rahul/Documents/config/Vim__files/",
         "/home/rahul/Documents/personal/wikiNotes/",
         "/home/rahul/Documents/personal/texTemplates/",
-        "/home/rahul/Documents/acads/research/PaperImplementations/",
     ]
     for path in allRepos:
         abs_path = os.path.join(parent_directory, path)

@@ -16,8 +16,9 @@ return {
     'compton --config ' .. filesystem.get_configuration_dir() .. 'configuration/compton.conf',
     'xfce4-power-manager', -- Power manager
 	'xss-lock -q -- betterlockscreen --lock blur',
-	-- '/home/rahul/Documents/software/dropbox/dropbox.py start',
 	'mailspring',
-	-- 'slack'
+    'redshift',
+    'google-calendar',
+    '~/.dropbox-dist/dropboxd'
   }
 }

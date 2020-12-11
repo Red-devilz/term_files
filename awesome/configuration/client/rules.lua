@@ -31,8 +31,21 @@ awful.rules.rules = {
 	  except = { instance = "Navigator" },
 	  properties = {floating = true},
   },
-  { rule = { instance = "deadcells" },
+  { 
+     rule = { class = "Emacs" },
+     properties = { size_hints_honor = true } 
+  },
+  { 
+      rule = { instance = "deadcells" },
 	  properties = {floating = true},
+  },
+  { 
+      rule = { class = "google-calendar-nativefier-e22938" },
+      properties = { tag = "4" } 
+  },
+  { 
+	rule = { instance = "google-calendar" },
+    properties = {floating = true},
   },
   { 
 	rule = { instance = "slack" },
