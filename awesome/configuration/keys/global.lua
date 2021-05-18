@@ -11,7 +11,6 @@ local apps = require('configuration.apps')
 local globalKeys =
   awful.util.table.join(
   -- Hotkeys
-  awful.key({modkey}, 'F1', hotkeys_popup.show_help, {description = 'show help', group = 'awesome'}),
   -- Tag browsing
   awful.key({modkey}, 'k', awful.tag.viewprev, {description = 'view previous', group = 'tag'}),
   awful.key({modkey}, 'j', awful.tag.viewnext, {description = 'view next', group = 'tag'}),
@@ -193,7 +192,7 @@ local globalKeys =
     {},
     'XF86AudioRaiseVolume',
     function()
-      awful.util.spawn_with_shell('amixer -D pulse sset Master 5%+ && python3 ~/.config/awesome/widget/get_alsa.py')
+      awful.util.spawn_with_shell('amixer -D pulse sset Master 5%+')
     end,
     {description = 'volume up', group = 'hotkeys'}
   ),
@@ -201,7 +200,7 @@ local globalKeys =
     {},
     'XF86AudioLowerVolume',
     function()
-      awful.util.spawn_with_shell('amixer -D pulse sset Master 5%- && python3 ~/.config/awesome/widget/get_alsa.py')
+      awful.util.spawn_with_shell('amixer -D pulse sset Master 5%-')
     end,
     {description = 'volume down', group = 'hotkeys'}
   ),
@@ -210,7 +209,7 @@ local globalKeys =
     'XF86AudioMute',
     function()
       -- awful.spawn('amixer -D pulse set Master 1+ toggle')
-      awful.util.spawn_with_shell('amixer -D pulse sset Master 1+ toggle && python3 ~/.config/awesome/widget/get_alsa.py')
+      awful.util.spawn_with_shell('amixer -D pulse sset Master 1+ toggle')
     end,
     {description = 'toggle mute', group = 'hotkeys'}
   ),
@@ -219,6 +218,33 @@ local globalKeys =
     'XF86AudioNext',
     function()
       --
+    end,
+    {description = 'toggle mute', group = 'hotkeys'}
+  ),
+
+  -- Alt Audio
+  awful.key(
+    {},
+    'F3',
+    function()
+      awful.util.spawn_with_shell('amixer -D pulse sset Master 5%+')
+    end,
+    {description = 'volume up', group = 'hotkeys'}
+  ),
+  awful.key(
+    {},
+    'F2',
+    function()
+      awful.util.spawn_with_shell('amixer -D pulse sset Master 5%-')
+    end,
+    {description = 'volume down', group = 'hotkeys'}
+  ),
+  awful.key(
+    {},
+    'F1',
+    function()
+      -- awful.spawn('amixer -D pulse set Master 1+ toggle')
+      awful.util.spawn_with_shell('amixer -D pulse sset Master 1+ toggle')
     end,
     {description = 'toggle mute', group = 'hotkeys'}
   ),

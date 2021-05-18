@@ -9,6 +9,7 @@ local TagList = require('widget.tag-list')
 local TaskList = require('widget.task-list')
 local clickable_container = require('widget.material.clickable-container') 
 local spotify_widget = require("widget.spotify")
+local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
 
 
 return function(screen, panel, action_bar_width)
@@ -105,7 +106,11 @@ return function(screen, panel, action_bar_width)
       -- Right widgets
       layout = wibox.layout.fixed.vertical,
 	  wibox.container.margin(spt_widget, dpi(15), dpi(15), dpi(10), dpi(10)),
-	  wibox.container.margin(systray, dpi(14), dpi(14), dpi(0), dpi(5)),
+	  wibox.container.margin(
+        volume_widget{
+            widget_type = 'arc'
+        }, dpi(14), dpi(14), dpi(0), dpi(5)),
+	  wibox.container.margin(systray, dpi(14), dpi(14), dpi(5), dpi(5)),
 	  -- clock_widget
 	  wibox.container.margin(mytextclock, 1, 1, 0, 8)
     }

@@ -17,7 +17,7 @@ return {
     'xfce4-power-manager', -- Power manager
 	'xss-lock -q -- betterlockscreen --lock blur',
 	'mailspring',
-    'rescuetime',
+    'redshift -P -O 5000',
     'google-calendar',
     '~/.dropbox-dist/dropboxd'
   }

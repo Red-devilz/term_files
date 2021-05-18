@@ -118,6 +118,7 @@ fi
 
 
 # scp no_globing
+zstyle :omz:plugins:ssh-agent identities github
 alias scp='noglob scp_wrap'
 function scp_wrap {
   local -a args
